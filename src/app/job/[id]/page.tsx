@@ -5,14 +5,25 @@ import { useJobStore } from "@/store/useJobStore";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+type Job = {
+  id: number;
+  title: string;
+  company: string;
+  location: string;
+  salary: string;
+  requiredSkills: string[];
+};
+
 export default function JobDetailsPage() {
   const { jobs } = useJobStore();
   const { id } = useParams();
-  const [job, setJob] = useState(null);
+  const [job, setJob] = useState<Job | null>(null);
 
   useEffect(() => {
-    const selectedJob = jobs.find((job) => job.id === parseInt(id));
-    setJob(selectedJob);
+    if (typeof id === "string") {
+      const selectedJob = jobs.find((job) => job.id === parseInt(id));
+      setJob(selectedJob ?? null);
+    }
   }, [jobs, id]);
 
   if (!job) return <p>Loading job details...</p>;

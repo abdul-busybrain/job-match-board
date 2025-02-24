@@ -12,7 +12,7 @@ export default function HomePage() {
   useEffect(() => {
     fetchJobs(); // Fetch job listings
     fetchUser(1); // Assume user with ID 1 is logged in
-  }, []);
+  }, [fetchJobs, fetchUser]);
 
   return (
     <main>
