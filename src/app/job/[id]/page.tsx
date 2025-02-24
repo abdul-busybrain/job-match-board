@@ -36,6 +36,15 @@ export default function JobDetailsPage() {
     }
   }, [jobs, id]);
 
+  // Change page title dynamically
+  useEffect(() => {
+    if (job?.title) {
+      document.title = `${job.title} | Job Details`;
+    } else {
+      document.title = "Job Details";
+    }
+  }, [job]);
+
   if (!job) return <p>Loading job details...</p>;
   if (!user) return <p>Loading user data...</p>;
 
