@@ -46,7 +46,7 @@ export default function JobList() {
 
             {/* View Job Details */}
             <Link href={`/job/${job.id}`} className="text-blue-500 underline">
-              View Details
+              View Job Details
             </Link>
           </div>
         );

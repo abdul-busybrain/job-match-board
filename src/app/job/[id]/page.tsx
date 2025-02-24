@@ -43,20 +43,39 @@ export default function JobDetailsPage() {
 
   return (
     <div className="p-6 bg-white shadow rounded-lg">
-      <h1 className="text-2xl font-bold">{job.title}</h1>
-      <p className="text-gray-600">
-        {job.company} - {job.location}
-      </p>
-      <p className="font-medium">{job.salary}</p>
-      <ul className="list-disc list-inside">
-        {job.requiredSkills.map((skill) => (
-          <li key={skill}>{skill}</li>
-        ))}
-      </ul>
+      <h1 className="text-2xl font-bold">About the job</h1>
+      <div className="flex items-center gap-2 mt-4">
+        <h2 className="text-2xl font-bold">Job Title:</h2>
+        <span>{job.title}</span>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <p className=" font-bold">Company name: </p>
+        <span>{job.company}</span>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <p className="font-bold">Job location:</p>
+        {job.location}
+      </div>
+
+      <div className="flex items-center gap-2">
+        <p className="font-bold">Salary range:</p>
+        <span>{job.salary}</span>
+      </div>
+
+      <div className="flex gap-2">
+        <p className="font-bold">Required skills:</p>
+        <ul className="list-none">
+          {job.requiredSkills.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+      </div>
       <Button className="mt-3" disabled={matchScore < 50}>
         {matchScore >= 50
           ? "Apply Now"
-          : `Improve Skills your ${job.requiredSkills.join(", ")}`}
+          : `Improve your skills in ${job.requiredSkills.join(", ")}`}
       </Button>
     </div>
   );
