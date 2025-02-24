@@ -4,7 +4,6 @@ import { useJobStore } from "@/store/useJobStore";
 import { useUserStore } from "@/store/useUserStore";
 import Link from "next/link";
 import ProgressBar from "@/components/ProgressBar";
-import { Button } from "@/components/ui/button";
 
 interface Job {
   id: number;
@@ -49,11 +48,6 @@ export default function JobList() {
             <Link href={`/job/${job.id}`} className="text-blue-500 underline">
               View Details
             </Link>
-
-            {/* Apply Button */}
-            <Button className="mt-3" disabled={matchScore < 50}>
-              {matchScore >= 50 ? "Apply Now" : "Improve Skills"}
-            </Button>
           </div>
         );
       })}

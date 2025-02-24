@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useJobStore } from "@/store/useJobStore";
+import { useUserStore } from "@/store/useUserStore";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -14,8 +15,17 @@ type Job = {
   requiredSkills: string[];
 };
 
+const calculateMatchScore = (userSkills: string[], jobSkills: string[]) => {
+  if (!userSkills || !jobSkills) return 0;
+  const matchedSkills = jobSkills.filter((skill) =>
+    userSkills.includes(skill)
+  ).length;
+  return Math.round((matchedSkills / jobSkills.length) * 100);
+};
+
 export default function JobDetailsPage() {
   const { jobs } = useJobStore();
+  const { user } = useUserStore();
   const { id } = useParams();
   const [job, setJob] = useState<Job | null>(null);
 
@@ -27,6 +37,9 @@ export default function JobDetailsPage() {
   }, [jobs, id]);
 
   if (!job) return <p>Loading job details...</p>;
+  if (!user) return <p>Loading user data...</p>;
+
+  const matchScore = calculateMatchScore(user.skills, job.requiredSkills);
 
   return (
     <div className="p-6 bg-white shadow rounded-lg">
@@ -40,7 +53,11 @@ export default function JobDetailsPage() {
           <li key={skill}>{skill}</li>
         ))}
       </ul>
-      <Button className="mt-4">Apply Now</Button>
+      <Button className="mt-3" disabled={matchScore < 50}>
+        {matchScore >= 50
+          ? "Apply Now"
+          : `Improve Skills your ${job.requiredSkills.join(", ")}`}
+      </Button>
     </div>
   );
 }
