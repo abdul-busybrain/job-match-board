@@ -2,19 +2,28 @@
 
 import { useJobStore } from "@/store/useJobStore";
 import { useUserStore } from "@/store/useUserStore";
-import ProgressBar from "./ProgressBar";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import ProgressBar from "@/components/ProgressBar";
+import { Button } from "@/components/ui/button";
 
-const calculateMatchScore = (userSkills: string[], jobSkils: string[]) => {
-  if (!userSkills || !jobSkils) return 0;
-  const matchedSkills = jobSkils.filter((skill) =>
+interface Job {
+  id: number;
+  title: string;
+  company: string;
+  location: string;
+  salary: string;
+  requiredSkills: string[];
+}
+
+const calculateMatchScore = (userSkills: string[], jobSkills: string[]) => {
+  if (!userSkills || !jobSkills) return 0;
+  const matchedSkills = jobSkills.filter((skill) =>
     userSkills.includes(skill)
   ).length;
-  return Math.round((matchedSkills / jobSkils.length) * 100);
+  return Math.round((matchedSkills / jobSkills.length) * 100);
 };
 
-function JobList() {
+export default function JobList() {
   const { jobs } = useJobStore();
   const { user } = useUserStore();
 
@@ -22,7 +31,7 @@ function JobList() {
 
   return (
     <div className="space-y-4">
-      {jobs.map((job) => {
+      {jobs.map((job: Job) => {
         const matchScore = calculateMatchScore(user.skills, job.requiredSkills);
 
         return (
@@ -33,17 +42,17 @@ function JobList() {
             </p>
             <p className="font-medium">{job.salary}</p>
 
-            {/* Match score Progress Bar */}
+            {/* Match Score Progress Bar */}
             <ProgressBar score={matchScore} />
 
             {/* View Job Details */}
             <Link href={`/job/${job.id}`} className="text-blue-500 underline">
-              View details
+              View Details
             </Link>
 
             {/* Apply Button */}
             <Button className="mt-3" disabled={matchScore < 50}>
-              {matchScore >= 50 ? "Apply Now" : "Improve your skills to apply"}
+              {matchScore >= 50 ? "Apply Now" : "Improve Skills"}
             </Button>
           </div>
         );
@@ -51,5 +60,3 @@ function JobList() {
     </div>
   );
 }
-
-export default JobList;

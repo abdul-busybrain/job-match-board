@@ -1,6 +1,20 @@
 import { create } from "zustand";
 
-export const useJobStore = create((set) => ({
+interface Job {
+  id: number;
+  title: string;
+  company: string;
+  location: string;
+  salary: string;
+  requiredSkills: string[];
+}
+
+interface JobStore {
+  jobs: Job[];
+  fetchJobs: () => Promise<void>;
+}
+
+export const useJobStore = create<JobStore>((set) => ({
   jobs: [],
 
   fetchJobs: async () => {
