@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "skills": ["React", "Next.js", "JavaScript", "Tailwind CSS"]
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "skills": ["Figma", "CSS", "React"]
+  },
+  {
+    "id": 3,
+    "name": "Alex Johnson",
+    "email": "alex.johnson@example.com",
+    "skills": ["Vue.js", "Nuxt.js", "TypeScript"]
+  }
+]
