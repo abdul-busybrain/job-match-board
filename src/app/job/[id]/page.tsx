@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useJobStore } from "@/store/useJobStore";
 import { useUserStore } from "@/store/useUserStore";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type Job = {
@@ -26,6 +27,8 @@ const calculateMatchScore = (userSkills: string[], jobSkills: string[]) => {
 export default function JobDetailsPage() {
   const { jobs } = useJobStore();
   const { user } = useUserStore();
+
+  const router = useRouter();
   const { id } = useParams();
   const [job, setJob] = useState<Job | null>(null);
 
@@ -52,6 +55,9 @@ export default function JobDetailsPage() {
 
   return (
     <div className="p-6 bg-white shadow rounded-lg">
+      <Button onClick={() => router.back()} className="mb-4" variant="link">
+        🔙 Back
+      </Button>
       <h1 className="text-2xl font-bold">About the job</h1>
       <div className="flex items-center gap-2 mt-4">
         <h2 className="text-2xl font-bold">Job Title:</h2>
@@ -75,7 +81,7 @@ export default function JobDetailsPage() {
 
       <div className="flex gap-2">
         <p className="font-bold">Required skills:</p>
-        <ul className="list-none">
+        <ul className="list-disc pl-4">
           {job.requiredSkills.map((skill) => (
             <li key={skill}>{skill}</li>
           ))}
