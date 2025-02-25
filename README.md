@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏆 AI-Powered Job Match Dashboard
 
-## Getting Started
+An AI-powered job matching platform that helps users find the best job opportunities based on their skills. Built with **Next.js, Tailwind CSS, ShadCN, and Zustand**, this project ensures a seamless and intelligent job search experience.
 
-First, run the development server:
+## 🌐 Live Demo
+
+🔗 **Live URL:** [https://job-match-board.vercel.app/](#)
+
+## 📂 Repository
+
+🔗 **GitHub Repo:** [https://github.com/abdul-busybrain/job-match-board](#)
+
+## 📌 Features
+
+- ✅ **Job Listings** – Browse jobs from different industries.
+- ✅ **AI Match Score** – Find how well your skills match a job.
+- ✅ **Apply Now / Improve Skills** – Apply directly or get suggested skills to improve.
+- ✅ **Modern UI** – Built with **ShadCN**, **Tailwind CSS**, and **Next.js**.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js, React, TypeScript
+- **UI Components:** Tailwind CSS, ShadCN
+- **State Management:** Zustand
+- **API Handling:** Fetch API (Mock Data for now)
+
+## 🚀 Getting Started
+
+### **1️⃣ Clone the Repository**
+
+```bash
+git clone https://github.com/abdul-busybrain/job-match-board
+cd job-match-board
+```
+
+### **2️⃣ Install Dependencies**
+
+```bash
+npm install
+```
+
+### **3️⃣ Run the Development Server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### For Job Seekers
 
-## Learn More
+1. Visit the dashboard and browse job listings.
+2. Check the AI Match Score to see how well you fit a job.
+3. Click "Apply Now" if your match score is 50% or higher.
+4. If below 50%, you'll see suggested skills to improve.
 
-To learn more about Next.js, take a look at the following resources:
+### 🛠 For Developers
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Modify job listings in the mock API (store/useJobStore.ts).
+2. Modify user listings in the mock API (store/useUserStore.ts)
+3. Customize the matching algorithm in calculateMatchScore().
+4. Improve the UI by updating Tailwind & ShadCN components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📬 Contact
 
-## Deploy on Vercel
+For any inquiries, feedback, or collaboration opportunities, feel free to reach out:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 👨‍💻 **Auwal Abdullahi Haruna Portfolio:** [https://abdullahibusybrain.vercel.app](#)
+- 🔗 **LinkedIn:** [https://www.linkedin.com/in/abdullahi-auwal-haruna-3b298422b](#)
+- 🐦 **X (Twitter):** [https://x.com/abdul_busybrain](#)
+- 📧 **Email:** [abdullahiauwalharun@gmail.com](#)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is open-source under the MIT License. Feel free to contribute and improve! 🚀
