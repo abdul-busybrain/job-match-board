@@ -29,7 +29,7 @@ export default function JobList() {
   if (!user) return <p>Loading user data...</p>;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-black/50 p-4 rounded-lg shadow-md border border-gray-200">
       {jobs.map((job: Job) => {
         const matchScore = calculateMatchScore(user.skills, job.requiredSkills);
 

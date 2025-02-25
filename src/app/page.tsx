@@ -42,7 +42,7 @@ export default function HomePage() {
   };
 
   return (
-    <main>
+    <main className="bg-gray-50 min-h-screen p-6">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">AI-Powered Job Match Dashboard</h1>
 
@@ -50,12 +50,12 @@ export default function HomePage() {
           <span className="semi-bold">User:</span>
           {users.length > 0 ? (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant={"outline"}>
+              <DropdownMenuTrigger asChild >
+                <Button variant={"outline"} className="bg-blue-600 text-white hover:bg-blue-700 transition-all">
                   {user?.name || "Select User"} ⬇️
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="bg-white border border-cyan-500 rounded-lg shadow-md">
                 {users.map((u: User) => (
                   <DropdownMenuItem
                     key={u.id}
@@ -72,7 +72,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <JobList />
+      <JobList  />
     </main>
   );
 }

@@ -54,44 +54,69 @@ export default function JobDetailsPage() {
   const matchScore = calculateMatchScore(user.skills, job.requiredSkills);
 
   return (
-    <div className="p-6 bg-white shadow rounded-lg">
-      <Button onClick={() => router.back()} className="mb-4" variant="link">
-        🔙 Back
-      </Button>
-      <h1 className="text-2xl font-bold">About the job</h1>
-      <div className="flex items-center gap-2 mt-4">
-        <h2 className="text-2xl font-bold">Job Title:</h2>
-        <span>{job.title}</span>
-      </div>
+    <div className="p-6 bg-gray-100 min-h-screen flex justify-center items-center">
+      <div className="bg-white shadow-lg rounded-lg p-6 max-w-xl w-full">
+        <Button
+          onClick={() => router.back()}
+          className="mb-4 text-blue-600 hover:text-blue-700"
+          variant="link"
+        >
+          🔙 Back
+        </Button>
+        <h1 className="text-2xl font-bold text-gray-800">About the job</h1>
 
-      <div className="flex items-center gap-2">
-        <p className=" font-bold">Company name: </p>
-        <span>{job.company}</span>
-      </div>
+        <div className="mt-4">
+          <h2 className="text-lg font-bold text-gray-700">Job Title:</h2>
+          <span className="text-gray-800">{job.title}</span>
+        </div>
 
-      <div className="flex items-center gap-2">
-        <p className="font-bold">Job location:</p>
-        {job.location}
-      </div>
+        <div className="mt-2">
+          <p className="font-bold text-gray-700">Company name:</p>
+          <span className="text-gray-800">{job.company}</span>
+        </div>
 
-      <div className="flex items-center gap-2">
-        <p className="font-bold">Salary range:</p>
-        <span>{job.salary}</span>
-      </div>
+        <div className="mt-2">
+          <p className="font-bold text-gray-700">Job location:</p>
+          <span className="text-gray-800">{job.location}</span>
+        </div>
 
-      <div className="flex gap-2">
-        <p className="font-bold">Required skills:</p>
-        <ul className="list-disc pl-4">
-          {job.requiredSkills.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
+        <div className="mt-2">
+          <p className="font-bold text-gray-700">Salary range:</p>
+          <span className="text-gray-800">{job.salary}</span>
+        </div>
+
+        <div className="mt-2">
+          <p className="font-bold text-gray-700">Required skills:</p>
+          <ul className="list-disc pl-4 text-gray-800">
+            {job.requiredSkills.map((skill) => (
+              <li key={skill}>{skill}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          className={`mt-4 px-3 py-2 rounded-lg text-sm font-semibold ${
+            matchScore >= 50
+              ? "bg-green-100 text-green-700"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
+          {matchScore >= 50
+            ? `Match Score: ${matchScore}% ✅`
+            : `Match Score: ${matchScore}% ❌`}
+        </div>
+
+        <Button
+          className={`mt-4 w-full ${
+            matchScore >= 50
+              ? "bg-blue-500 hover:bg-blue-600 text-white"
+              : "bg-gray-300 text-gray-500 cursor-not-allowed"
+          }`}
+          disabled={matchScore < 50}
+        >
+          {matchScore >= 50 ? "Apply Now" : "Improve Your Skills"}
+        </Button>
       </div>
-      <Button className="mt-3" disabled={matchScore < 50}>
-        {matchScore >= 50
-          ? "Apply Now"
-          : `Improve your skills in ${job.requiredSkills.join(", ")}`}
-      </Button>
     </div>
   );
 }
