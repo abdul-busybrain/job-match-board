@@ -20,7 +20,7 @@ type User = {
 
 export default function HomePage() {
   const { fetchJobs } = useJobStore();
-  const { users, user, fetchUsers, fetchUser, setUser } = useUserStore();
+  const { user, users, fetchUser, fetchUsers, setUser } = useUserStore();
   const [selectedUserId, setSelectedUserId] = useState<number>(user?.id || 1);
 
   // Fetch jobs and user data on component mount
@@ -50,8 +50,11 @@ export default function HomePage() {
           <span className="semi-bold">User:</span>
           {users.length > 0 ? (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild >
-                <Button variant={"outline"} className="bg-blue-600 text-white hover:bg-blue-700 transition-all">
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant={"outline"}
+                  className="bg-blue-600 text-white hover:bg-blue-700 transition-all"
+                >
                   {user?.name || "Select User"} ⬇️
                 </Button>
               </DropdownMenuTrigger>
@@ -72,7 +75,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <JobList  />
+      <JobList />
     </main>
   );
 }
